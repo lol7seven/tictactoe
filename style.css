@@ -4,10 +4,40 @@
     justify-content: center;
     align-items: center;
     background-color: #586b7e;
+    margin-bottom: 20px;
 }
 
 .header h1 {
     color: #a6eafb;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 102px;
+}
+
+.table {
+    padding: 10px;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.block {
+    border-radius: 20px;
+    width: 30%;
+    height: 30%;
+    background-color: #c0c0c0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 38px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 0.2s;
+}
+
+.block:hover {
+    scale: 1.1;
+    background-color: #999999;
 }
