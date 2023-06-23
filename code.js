@@ -1,5 +1,7 @@
 const table = document.getElementById("table");
-const turnMessage = document.getElementById("turn-message")
+const turnMessage = document.getElementById("turn-message");
+
+const restartButton = document.getElementById("restart-button");
 
 const GameBoard = (() => {
     let turn = "X";
@@ -15,7 +17,6 @@ const GameBoard = (() => {
             board[place] = turn;
             turn = turn === "X" ? "O" : "X";
         }
-        
     };
     return {
         getBoard,
@@ -31,12 +32,22 @@ function printTable() {
 }
 
 function printTurn() {
-    turnMessage.innerHTML = `<h2>Next turn: ${GameBoard.getTurn()} </h2>`
+    turnMessage.innerHTML = `<h2>Next turn: ${GameBoard.getTurn()} </h2>`;
+}
+
+function restart() {
+    for (let i = 0; i < 9; i++) {
+        GameBoard.getBoard()[i] = " ";
+    }
+    printTable();
 }
 
 table.addEventListener("click", (e) => {
     console.log(e.target.id);
     GameBoard.setSign(e.target.id);
     printTable();
-    printTurn()
+    printTurn();
 });
+
+
+restartButton.addEventListener("click", restart)

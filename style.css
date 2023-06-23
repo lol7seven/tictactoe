@@ -48,3 +48,26 @@
     scale: 1.1;
     background-color: #999999;
 }
+
+.button-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#restart-button {
+    width: 200px;
+    height: 62px;
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: bold;
+    color: #ebf3f2;
+    background-color: #687185;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#restart-button:hover {
+    background-color: #a1a9b9;
+}
