@@ -45,13 +45,29 @@ function printWinner(winner) {
 function checkWinner(player) {
     let board = GameBoard.getBoard()
     if (
-        (board[0] === player && board[1] === player & board[2] === player) ||
-        (board[3] === player && board[4] === player & board[5] === player) ||
-        (board[6] === player && board[7] === player & board[8] === player) ||
-        (board[0] === player && board[4] === player & board[8] === player) ||
-        (board[2] === player && board[4] === player & board[6] === player) 
+        (board[0] === player && board[1] === player && board[2] === player) ||
+        (board[3] === player && board[4] === player && board[5] === player) ||
+        (board[6] === player && board[7] === player && board[8] === player) ||
+        (board[0] === player && board[3] === player && board[6] === player) ||
+        (board[1] === player && board[4] === player && board[7] === player) ||
+        (board[2] === player && board[5] === player && board[8] === player) ||
+        (board[0] === player && board[4] === player && board[8] === player) ||
+        (board[2] === player && board[4] === player && board[6] === player) 
     ) {
         printWinner(player)
+        return true
+    }
+}
+
+function checkTie() {
+    let count = 0
+    for (let i = 0; i < 9; i++) {
+        if (GameBoard.getBoard()[i] !== " ") {
+            count++
+        }
+    }
+    if (count === 9) {
+        message.innerHTML = "<h2> It's a tie </h2>"
     }
 }
 
@@ -64,11 +80,15 @@ function restart() {
 }
 
 table.addEventListener("click", (e) => {
+    if (checkWinner(X) || checkWinner(O) ){
+        return
+    }
     GameBoard.setSign(e.target.id);
     printTable();
     printTurn();
     checkWinner(X);
     checkWinner(O);
+    checkTie()
 });
 
 
